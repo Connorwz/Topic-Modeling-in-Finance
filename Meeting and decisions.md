@@ -18,5 +18,5 @@
 2. Drop those companies whose ***permno*** in CRSP are not mapped to ***Entity_id*** in RavenPack
 
 # 5/8/2024
-1. Drop those *entity_ids* which don't exist in RavenPack
+1. Drop those *entity_ids* in the mapping file which don't exist in RavenPack
 2. Include future returns (as in **4/26/2024**) and contemporaneous  returns (as in **4/18/2024**)
