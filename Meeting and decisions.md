@@ -5,8 +5,8 @@
 # 4/18/2024
 1. Headlines should be associated with returns based on timestamps in the way that ($t+1$ means next trading day):
    * Headlines are released on holidays--next trading day's return $= ret_{t+1}$
-   * Headlines are released before trading day's closing time (4:30 PM ET for NYSE)--same day's return $= ret_{t}$
-   * Headlines are released after trading day's closing time (4:30 PM ET for NYSE)--next trading day's return $= ret_{t+1}$
+   * Headlines are released before trading day's closing time (4:00 PM ET for NYSE)--same day's return $= ret_{t}$
+   * Headlines are released after trading day's closing time (4:00 PM ET for NYSE)--next trading day's return $= ret_{t+1}$
 2. Based on previous research experiences, 200 is a good choice of topics' size for 2M articles and **50-100** is good for **2.8M** headlines
 
 # 4/26/2024
