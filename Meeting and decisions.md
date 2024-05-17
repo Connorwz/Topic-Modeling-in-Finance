@@ -14,7 +14,7 @@
    * $P_{t}$:opening price on the same trading day; $P_{t}'$: closing price on the same trading day; $P_{t+1}$: opening price on the next trading day ...
    * Headlines are released on holidays--returns are calculated $r = \frac{P_{t+1}' - P_{t+1}}{P_{t+1}} = COret_{t+1}$ 
    * Headlines are released before trading day's opening time (9:00 AM ET for NYSE)--returns are calculated $r = \frac{P_{t}' - P_{t}}{P_{t}} = COret_{t}$
-   * Headlines are released after trading day's opening time (9:00 AM ET for NYSE)--returns are calculated $r = \frac{P_{t+1}' - P_{t}'}{P_{t}'} = ret_{t+1}$
+   * Headlines are released after trading day's opening time (9:00 AM ET for NYSE) and before closing time (4:00 PM ET for NYSE)--returns are calculated $r = \frac{P_{t+1}' - P_{t}'}{P_{t}'} = ret_{t+1}$
 2. Drop those companies whose ***permno*** in CRSP are not mapped to ***Entity_id*** in RavenPack
 
 # 5/8/2024
