@@ -1,6 +1,11 @@
 # 4/12/2024
 1. Companies invovled in the research should be at least monthly constituents of SP500 stocks
-2. Same headlines happening in consecutive days should be removed
+2. Create a time-varying list available on CRSP
+3. Link the stock market data from CRSP with the company identifier from Raven Pack
+4. Same headlines happening in consecutive days should be removed
+5. For LDA: Pick a subset of the words and specifiy the vocab.
+6. Evaluate Computing-complexities: BERT: Embeddings and Model Fitting.
+7. Find research support in Parallel Processing and Running over-night.
 
 # 4/18/2024
 1. Headlines should be associated with returns based on timestamps in the way that ($t+1$ means next trading day):
@@ -8,6 +13,9 @@
    * Headlines are released before trading day's closing time (4:00 PM ET for NYSE)--same day's return $= ret_{t}$
    * Headlines are released after trading day's closing time (4:00 PM ET for NYSE)--next trading day's return $= ret_{t+1}$
 2. Based on previous research experiences, 200 is a good choice of topics' size for 2M articles and **50-100** is good for **2.8M** headlines
+3. Research on BERT: Topic number chosen; Different topic numbers each time; How to transfer embedding back to words
+4. Research on LDA: Gibbs sampling, check convergence tools or parameters
+
 
 # 4/26/2024
 1. It's more interested in investigating the trading returns so headlines and trading returns are linked in the way that ($t+1$ means next trading day):
