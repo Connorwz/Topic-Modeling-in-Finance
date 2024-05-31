@@ -28,3 +28,10 @@
 # 5/8/2024
 1. Drop those *entity_ids* in the mapping file which don't exist in RavenPack
 2. Include future returns (as in **4/26/2024**) and contemporaneous  returns (as in **4/18/2024**)
+
+# 5/31/2024
+1. Document findings through research
+2. There are variations and randomeness in **Bertopic**. The different setting-ups causing variations should be documented
+3. Vocabulary should be set properly: dropping those words very frequentaly or unusally; and they should be set similarly for **LDA** and **BERTopic**
+
+   
