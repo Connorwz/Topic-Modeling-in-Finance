@@ -5,3 +5,4 @@
    min_df=0.1, max_df = 0.9: 0.15%
    min_df=0.05, max_df = 0.95: 0.087%
    in_df=0.15, max_df = 0.85: 0.091%
+5. $R^2$ of BERT 2021-2023 future returns, min_df=0.1, max_df = 0.9: 0.082%
