@@ -34,4 +34,8 @@
 2. There are variations and randomeness in **Bertopic**. The different setting-ups causing variations should be documented
 3. Vocabulary should be set properly: dropping those words very frequentaly or unusally; and they should be set similarly for **LDA** and **BERTopic**
 
+# 6/7/2024
+1. Document influences of **LDA**'s iterations on $R^2$
+2. Compare different choices of models or variations within **BERTopic**
+
    
