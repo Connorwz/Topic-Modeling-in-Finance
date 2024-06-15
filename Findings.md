@@ -31,9 +31,9 @@
    in_df=0.15, max_df = 0.85: 0.091%
 8. $R^2$ of BERT 2021-2023 future returns, min_df=0.1, max_df = 0.9: 0.082%
 
-## Comparisons of variations within BERTopic
+## Comparisons of variations within BERTopic (reduced dimension before clustering is 10 here)
    1. Number of topics is 62:
-   * $R^2$:
+   * Training error:
 
    |Combinatiosn/year|2023|2022|2021|2020|2019|2018|2017|2016|2015|2014|
    |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
@@ -51,9 +51,18 @@
    |UMAP+GMM|||
    |PCA+GMM|||
 
+   * $R^2$:
+
+   |Combinatiosn/year|2023|2022|2021|2020|2019|2018|2017|2016|2015|2014|
+   |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
+   |UMAP+HDBSCAN||||
+   |PCA+K-Means| ||
+   |UMAP+GMM|||
+   |PCA+GMM|||
+   
    2. Number of topics is 100:
 
-   * $R^2$:
+   * Training error:
    
    |Combinatiosn/year|2023|2022|2021|2020|2019|2018|2017|2016|2015|2014|
    |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
@@ -64,6 +73,15 @@
 
    * Testing error:
    
+   |Combinatiosn/year|2023|2022|2021|2020|2019|2018|2017|2016|2015|2014|
+   |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
+   |UMAP+HDBSCAN||||
+   |PCA+K-Means| ||
+   |UMAP+GMM|||
+   |PCA+GMM|||
+   
+   * $R^2$:
+
    |Combinatiosn/year|2023|2022|2021|2020|2019|2018|2017|2016|2015|2014|
    |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
    |UMAP+HDBSCAN||||
