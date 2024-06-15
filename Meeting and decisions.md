@@ -40,7 +40,7 @@
 
 # 6/14/2024
 1. Focus on one year's data now
-2. Document trails within BERTopic in a table that each column is a year and each row is a combination of models. Results in cells should be the average of **3** runs
+2. Document trails within BERTopic in a table that each column is a year and each row is a combination of models. Results in cells should be the average of **5** runs
 3. Explore and compare results for 62 (or (57,67) for random algorithms) and 100 (or (95,105) for random algorithms) topics for each year
 4. Explore the overfitting with spliting data into training set and testing set in the ration of 80% : 20%
 5. Finish hyperparameter tuning on BERTopic and apply the optimal ones on LDA
