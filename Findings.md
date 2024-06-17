@@ -31,7 +31,7 @@
    in_df=0.15, max_df = 0.85: 0.091%
 8. $R^2$ of BERT 2021-2023 future returns, min_df=0.1, max_df = 0.9: 0.082%
 
-## Comparisons of variations within BERTopic (reduced dimension before clustering is 10 here)
+## Comparisons of variations within BERTopic for contemporaneous returns(reduced dimension before clustering is 10 here)
    1. Number of topics is 62:
    * Training error:
 
