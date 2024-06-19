@@ -43,7 +43,11 @@
 2. Document trails within BERTopic in a table that each column is a year and each row is a combination of models. Results in cells should be the average of **5** runs
 3. Explore and compare results for 62 (or (57,67) for random algorithms) and 100 (or (95,105) for random algorithms) topics for each year
 4. Explore the overfitting with spliting data into training set and testing set in the ration of 80% : 20%
-5. Finish hyperparameter tuning on BERTopic and apply the optimal ones on LDA
+5. For research on variations within BERTopic:
+  * Embedding model is assumed to be the default one in BERTopic
+  * Reduced dimension is set as 10
+  * Three values are calculated: training error and testing error and $R^2$ based on the whole data
+7. Finish hyperparameter tuning on BERTopic and apply the optimal ones on LDA
 
 
    
