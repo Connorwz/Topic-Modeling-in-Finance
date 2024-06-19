@@ -32,14 +32,14 @@
 8. $R^2$ of BERT 2021-2023 future returns, min_df=0.1, max_df = 0.9: 0.082%
 
 ## Comparisons of variations within BERTopic for contemporaneous returns(reduced dimension before clustering is 10 here)
-   1. Number of topics is 62:
+   ### Number of topics is 62:
    * Training error:
 
    |Combinatiosn/year|2023|2022|2021|2020|2019|2018|2017|2016|2015|2014|
    |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
    |UMAP+HDBSCAN||||
    |PCA+K-Means| ||
-   |UMAP+GMM|||
+   |UMAP+GMM|||||||$2.004\times10^{-4}$|$3.659\times10^{-4}$|$3.046\times10^{-4}$|$2.113\times10^{-4}$|
    |PCA+GMM|||
    
    * Testing error:
@@ -48,7 +48,7 @@
    |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
    |UMAP+HDBSCAN||||
    |PCA+K-Means| ||
-   |UMAP+GMM|||
+   |UMAP+GMM|||||||$2.135\times10^{-4}$|$3.434\times10^{-4}$|$3.133\times10^{-4}$|$2.013\times10^{-4}$|
    |PCA+GMM|||
 
    * $R^2$:
@@ -57,10 +57,10 @@
    |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
    |UMAP+HDBSCAN||||
    |PCA+K-Means| ||
-   |UMAP+GMM|||
+   |UMAP+GMM|||||||0.2147%|0.1361%|0.2617%|0.2337%|
    |PCA+GMM|||
    
-   2. Number of topics is 100:
+   ### Number of topics is 100:
 
    * Training error:
    
@@ -68,8 +68,8 @@
    |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
    |UMAP+HDBSCAN||||
    |PCA+K-Means| ||
-   |UMAP+GMM|||
-   |PCA+GMM|||
+   |UMAP+GMM|||||||$2.003\times10^{-4}$|$3.657\times10^{-4}$|$3.050\times10^{-4}$|$2.116\times10^{-4}$|
+   |PCA+GMM|||||||||||
 
    * Testing error:
    
@@ -77,7 +77,7 @@
    |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
    |UMAP+HDBSCAN||||
    |PCA+K-Means| ||
-   |UMAP+GMM|||
+   |UMAP+GMM|||||||$2.136\times10^{-4}$|$3.432\times10^{-4}$|$3.137\times10^{-4}$|$2.012\times10^{-4}$|
    |PCA+GMM|||
    
    * $R^2$:
@@ -86,6 +86,8 @@
    |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
    |UMAP+HDBSCAN||||
    |PCA+K-Means| ||
-   |UMAP+GMM|||
+   |UMAP+GMM|||||||0.2398%|0.2092%|0.1323%|0.1097%|
    |PCA+GMM|||
+
+   ### findings within variations
    
