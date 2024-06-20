@@ -93,4 +93,5 @@
    1. UMAP is highly unstable (?)
    2. The combination of UMAP and GMM performs bad (?)
    3. There is no significant gap betweem 62 and 100 clutsers' testing errors and in most cases 100 cluster's performances are better
+   4. "Outlier 2020 and 2014"
    
