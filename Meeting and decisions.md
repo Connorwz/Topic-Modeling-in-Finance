@@ -48,7 +48,15 @@
   * Embedding model is assumed to be the default one in BERTopic
   * Reduced dimension is set as 10
   * Three values are calculated: training error and testing error and $R^2$ based on the whole data
-6. Finish hyperparameter tuning on BERTopic and apply the optimal ones on LDA
+
+# 6/20/2024
+1. Comparing results for 60 and 120 topics each year, still recording the average of five runs, save topic representation. Calculating in sample and out sample R^2.
+2. Tune the HDBCAN to shrink topic number range. Control to +- 5. Find the relationship between topic number and R^2 of HDBSCAN.
+3. Find another dimentionality reduction algorithim, compare different models
+4. Analyzing topic quality, especially 2020 and 2014, make adjustment.
+   number of meaningful words in each topic.
+   human interpretable (?)
+5. Finish hyperparameter tuning on BERTopic and apply the optimal ones on LDA.
 
 
    
