@@ -52,11 +52,12 @@
 # 6/20/2024
 1. Comparing results for 60 and 120 topics each year, still recording the average of five runs, save topic representation from a random one trial. Calculating in-sample, out-sample and whole $R^2$.
 2. Tune the HDBCAN to shrink topic number range. Control to +- 5. Find the relationship between topic number and R^2 of HDBSCAN.
-3. Find another dimentionality reduction algorithim, compare different models
-4. Analyzing topic quality, especially 2020 and 2014, make adjustment.
+3. To address the randomness of HDBSCAN, for 60 and 120 topics' comparisons, those results from the same parameters within HDBSCAN having clusters within 55-65 ro 115-125 can be used.
+4. Find another dimentionality reduction algorithim, compare different models
+5. Analyzing topic quality, especially 2020 and 2014, make adjustment.
    * number of meaningful words in each topic.
    * human interpretable (?)
-5. Finish hyperparameter tuning on BERTopic and apply the optimal ones on LDA.
+6. Finish hyperparameter tuning on BERTopic and apply the optimal ones on LDA.
 
 
    
