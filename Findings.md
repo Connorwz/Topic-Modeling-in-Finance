@@ -90,9 +90,9 @@
    |PCA+GMM|0.6000%|0.6865%|0.6729%|0.8490%|0.6376%|0.8280%|4.4560%|0.4546%|0.6175%|1.0366%|
 
    ### findings within variations
-   1. UMAP is controversial and weird. several runs for one year can raise exactly same $R^2$ while some raise $R^2$ 100\times larger or smaller
+   1. UMAP is controversial and weird. several runs for one year can raise exactly same $R^2$ while some raise $R^2$ 100x larger or smaller
    2. The combination of PCA and GMM outperforms the combination of UMAP and GMM
-   3. *There is no significant gap betweem 62 and 100 clutsers' testing errors and in most cases 100 cluster's performances are better*
+   3. There is no significant gap betweem 60 and 120 clutsers' testing errors and in most cases 120 cluster's performances are better (?)
    4. There are circumstances that testing error is larger than training error (lucky draws)
 
    
