@@ -59,5 +59,12 @@
    * human interpretable (?)
 6. Finish hyperparameter tuning on BERTopic and apply the optimal ones on LDA.
 
-
-   
+# 6/20/2024
+1. Run LDA with cluster size 120 on one year data from 2014 to 2023.
+2. Run UMAP + HDBSCAN, compare different combination of parameters that lead to same clster range.
+3. Compare results of LDA with Bertopic based on $R^2$ table.
+4. Finish topic representation score: coherence score + diversity score + $R^2$. Compare the performance of different models.
+5. Combined the sentiment analysis with regression to see if the result is predictive.
+   * One document or One day’s sentiment
+   * Using sentiment analysis on the topic to find good news and bad news. Or
+   * Building positive, neutral, or negative sentiment topic model separately.
