@@ -59,7 +59,7 @@
    * human interpretable (?)
 6. Finish hyperparameter tuning on BERTopic and apply the optimal ones on LDA.
 
-# 6/20/2024
+# 6/27/2024
 1. Run LDA with cluster size 120 on one year data from 2014 to 2023.
 2. Run UMAP + HDBSCAN, compare different combination of parameters that lead to same clster range.
 3. Compare results of LDA with Bertopic based on $R^2$ table.
