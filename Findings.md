@@ -24,12 +24,19 @@
    | 100|-169667195|1.376%|
    | 500|-167988575|1.373%|
    | 1000|-167874214|1.408%|
+6. For LDA's insample $R^2$, outsample $R^2$, and whole $R^2$ having clusters of 60 and 120 from 2014 to 2024 are as follow (prior Dirichlet parameters over topics and words distributions $\alpha$ and $\eta$ are default with 0.1 and 0.01 respectively):
+   * Number of topics is 60:
+     |$R^2$|2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|
+     |-----|----|----|----|----|----|----|----|----|----|----|
+     Insample|0.3113%|0.3686%|0.4067%|0.5711%|0.3137%|0.5867%|2.3286%|0.1951%|0.3112%|0.9337%|
+     Outsample|-0.0833%|0.0450%|0.0114%|-0.2534%|-0.0236%|0.2174%|2.1339%|-0.0566%|0.1146%|1.0335%|
+     Whole|0.2803%|0.3461%|0.3588%|0.4648%|0.2829%|0.5517%|2.3191%|0.1671%|0.2914%|0.9839%|
    
-6. $R^2$ of BERT 2023 future returns, with Vectorize model: 
+7. $R^2$ of BERT 2023 future returns, with Vectorize model: 
    min_df=0.1, max_df = 0.9: 0.15%
    min_df=0.05, max_df = 0.95: 0.087%
    in_df=0.15, max_df = 0.85: 0.091%
-7. $R^2$ of BERT 2021-2023 future returns, min_df=0.1, max_df = 0.9: 0.082%
+8. $R^2$ of BERT 2021-2023 future returns, min_df=0.1, max_df = 0.9: 0.082%
 
 ## Comparisons of variations within BERTopic for contemporaneous returns(reduced dimension before clustering is 10 here)
    ### Number of topics is 60:
