@@ -38,12 +38,29 @@
      Insample|0.6765%|0.7714%|0.7776%|1.2895%|0.6326%|1.0900%|3.8446%|0.4514%|0.5754%|1.5668%|
      Outsample|-0.2209%|0.1464%|-0.0875%|-0.1460%|-0.0929%|-0.1643%|2.6777%|-0.1248%|$-9.8325\times10^{-4}$%|1.6245%|
      Whole|0.5974%|0.7395%|0.6753%|1.1081%|0.5886%|0.9650%|3.6817%|0.3892%|0.5120%|1.6487%|
+7. Random state check: check whether 2 runs give out different results under different situations with tuning `random_state` (Y: different; N: same)
+
+   * Data: first 349,844 rows of data in embeddings of 2023 contemperaneous returns' headlines ($\approx 20\$%)
+   * PCA: check the first 5 reduced embeddings (`n_componnets = 10`)
+   * UMAP: check the first 5 reduced embeddings (`n_componnets = 10`)
+
+     For clustering models. they are applied on reduced embeddings produced by PCA
+   * KMeans: check first 100 reduced embeddings' labels (`n_clusters = 120`)
+
+      |Model|No `random_state`|Same `random_state`|Different `random_state`|
+      |-----|-----------------|-------------------|------------------------|
+      |PCA|N|N|N|
+      |UMAP|Y|**Y**|Y|
+      |KMeans|Y (17 labels are different)|**Y** (15)|Y (98)|
+     
+   * HDBSCAN: it is found that HDBSCAN is stable with same hyperparameters
+     
    
-7. $R^2$ of BERT 2023 future returns, with Vectorize model: 
+9. $R^2$ of BERT 2023 future returns, with Vectorize model: 
    min_df=0.1, max_df = 0.9: 0.15%
    min_df=0.05, max_df = 0.95: 0.087%
    in_df=0.15, max_df = 0.85: 0.091%
-8. $R^2$ of BERT 2021-2023 future returns, min_df=0.1, max_df = 0.9: 0.082%
+10. $R^2$ of BERT 2021-2023 future returns, min_df=0.1, max_df = 0.9: 0.082%
 
 ## Comparisons of variations within BERTopic for contemporaneous returns(reduced dimension before clustering is 10 here)
    ### Number of topics is 60:
@@ -105,8 +122,20 @@
 
    ### findings within variations
    1. UMAP is controversial and weird. several runs for one year can raise exactly same $R^2$ while some raise $R^2$ 100x larger or smaller
-   2. The combination of PCA and GMM outperforms the combination of UMAP and GMM
-   3. There is no significant gap betweem 60 and 120 clutsers' testing errors and in most cases 120 cluster's performances are better (?)
-   4. There are circumstances that testing error is larger than training error (lucky draws)
+   2. There is no significant gap betweem 60 and 120 clutsers' testing errors and in most cases 120 cluster's performances are better
+   3. There are circumstances that testing error is larger than training error (lucky draws)
+
+
+
+
+   4. Illustration and explanation:
+
+      1. As from the randomness: PCA is stable because it is linear transformation; UMAP's randomness can't be controlled and anomalies may be produced; KMeans has some randomness from the random state check; GMM also has some randomeness from the results of combination of PCA and GMM ($R^2$s fluctuate within a range); HDBSCAN is stable from the random state check.
+      2. As from the performance: PCA outperforms UMAP from the results of combinations of (UMAP,GMM) and (PCA,GMM); KMeans and GMM have similar performances from the results of combinations of (UMAP,KMeans) and (UMAP, GMM).
+         
+   5. **One problem**: it is found that PCA+GMM's $R^2$s fluctuate in a range, illustring the randomness; However, except for those anomalies, $R^2$s of UMAP+GMM can stay in an exact level. Where do randomnesses of UMAP and GMM go? 
+   6. Best variation advice:
+
+      1. As for dimension reduction: PCA should be chosen; UMAP does perform well in terms of its algorithm, caputuring both local and global features of data and is the recommended way from BERTopic. However, this may apply to our topic or the problem may arise from cuML package, having anomalies and uncontrolled randomnesses so this may not be the one we need in our research.
 
    
