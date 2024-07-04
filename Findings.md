@@ -134,6 +134,6 @@
    5. **One problem**: it is found that PCA+GMM's $R^2$s fluctuate in a range, illustring the randomness; However, except for those anomalies, $R^2$s of UMAP+GMM can stay in an exact level. Where do randomnesses of UMAP and GMM go? 
    6. Best variation advice from Weidong:
 
-      1. As for dimension reduction: **PCA should be chosen**; UMAP does perform well in terms of its algorithm, caputuring both local and global features of data and is the recommended way from BERTopic. However, this seems not apply to our research. Some problems may arise from cuML package like having anomalies and uncontrolled randomnesses. Moreover, UMAP randomly throws a computaional error on GRID: *illegal access to memory of cuda* which is found a bug but not fixed yet and this error doesn't happen always.
+      1. As for dimension reduction: **PCA should be chosen**; UMAP does perform well in terms of its algorithm, caputuring both local and global features of data and is the recommended way from BERTopic. However, this seems not apply to our research. Some problems may arise from cuML package like having anomalies and uncontrolled randomnesses. Moreover, UMAP randomly throws a computaional error on GRID: `illegal access to memory of cuda` which is found a bug but not fixed yet and this error doesn't happen always.
 
    
