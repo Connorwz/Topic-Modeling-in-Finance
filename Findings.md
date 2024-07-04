@@ -43,9 +43,7 @@
    * Data: first 349,844 rows of data in embeddings of 2023 contemperaneous returns' headlines ($\approx 20\$%)
    * PCA: check the first 5 reduced embeddings (`n_componnets = 10`)
    * UMAP: check the first 5 reduced embeddings (`n_componnets = 10`)
-
-     For clustering models. they are applied on reduced embeddings produced by PCA
-   * KMeans: check first 100 reduced embeddings' labels (`n_clusters = 120`)
+   * KMeans: check first 100 reduced embeddings' labels (`n_clusters = 120`, applied on reduced embeddings produced by PCA)
 
       |Model|No `random_state`|Same `random_state`|Different `random_state`|
       |-----|-----------------|-------------------|------------------------|
