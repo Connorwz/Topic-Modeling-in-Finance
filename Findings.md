@@ -24,21 +24,8 @@
    | 100|-169667195|1.376%|
    | 500|-167988575|1.373%|
    | 1000|-167874214|1.408%|
-6. For LDA's insample $R^2$, outsample $R^2$, and whole $R^2$ having clusters of 60 and 120 from 2014 to 2024 are as follow (prior Dirichlet parameters over topics and words distributions $\alpha$ and $\eta$ are default with 0.1 and 0.01 respectively):
-   * Number of topics is 60:
-     |$R^2$|2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|
-     |-----|----|----|----|----|----|----|----|----|----|----|
-     Insample|0.3113%|0.3686%|0.4067%|0.5711%|0.3137%|0.5867%|2.3286%|0.1951%|0.3112%|0.9337%|
-     Outsample|-0.0833%|0.0450%|0.0114%|-0.2534%|-0.0236%|0.2174%|2.1339%|-0.0566%|0.1146%|1.0335%|
-     Whole|0.2803%|0.3461%|0.3588%|0.4648%|0.2829%|0.5517%|2.3191%|0.1671%|0.2914%|0.9839%|
-
-   * Number of topics is 120:
-     |$R^2$|2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|
-     |-----|----|----|----|----|----|----|----|----|----|----|
-     Insample|0.6765%|0.7714%|0.7776%|1.2895%|0.6326%|1.0900%|3.8446%|0.4514%|0.5754%|1.5668%|
-     Outsample|-0.2209%|0.1464%|-0.0875%|-0.1460%|-0.0929%|-0.1643%|2.6777%|-0.1248%|$-9.8325\times10^{-4}$%|1.6245%|
-     Whole|0.5974%|0.7395%|0.6753%|1.1081%|0.5886%|0.9650%|3.6817%|0.3892%|0.5120%|1.6487%|
-7. Random state check: check whether 2 runs give out different results under different situations with tuning `random_state` (Y: different; N: same)
+   
+6. Random state check: check whether 2 runs give out different results under different situations with tuning `random_state` (Y: different; N: same)
 
    * Data: first 349,844 rows of data in embeddings of 2023 contemperaneous returns' headlines ($\approx 20\$%)
    * PCA: check the first 5 reduced embeddings (`n_componnets = 10`)
@@ -54,11 +41,11 @@
    * HDBSCAN: it is found that HDBSCAN is stable with same hyperparameters
      
    
-9. $R^2$ of BERT 2023 future returns, with Vectorize model: 
+7. $R^2$ of BERT 2023 future returns, with Vectorize model: 
    min_df=0.1, max_df = 0.9: 0.15%
    min_df=0.05, max_df = 0.95: 0.087%
    in_df=0.15, max_df = 0.85: 0.091%
-10. $R^2$ of BERT 2021-2023 future returns, min_df=0.1, max_df = 0.9: 0.082%
+8. $R^2$ of BERT 2021-2023 future returns, min_df=0.1, max_df = 0.9: 0.082%
 
 ## Comparisons of variations within BERTopic and LDA for contemporaneous returns(reduced dimension before clustering is 10 here; for LDA, prior Dirichlet parameters $\alpha$ and $\eta$ are default 0.1 and 0.01)
    ### Number of topics is 60:
@@ -128,16 +115,55 @@
    |LDA|0.5974%|0.7395%|0.6753%|1.1081%|0.5886%|0.9650%|3.6817%|0.3892%|0.5120%|1.6487%|
    
    ### findings within variations
-   1. UMAP is controversial and weird. several runs for one year can raise exactly same $R^2$ while some raise $R^2$ 100x larger or smaller
-   2. There is no significant gap betweem 60 and 120 clutsers' testing errors and in most cases 120 cluster's performances are better
-   3. There are circumstances that testing error is larger than training error (lucky draws)
-   4. Illustration and explanation:
-      1. As from the randomness: PCA is stable because it is linear transformation; UMAP's randomness can't be controlled and anomalies may be produced; KMeans has some randomness from the random state check; GMM also has some randomeness from the results of combination of PCA and GMM ($R^2$s fluctuate within a range); HDBSCAN is stable from the random state check.
+   1. UMAP is controversial and weird. several runs for one year can raise exactly same $R^2$ while some raise $R^2$ 100x larger or smaller.
+   2. There is no significant gap betweem 60 and 120 clutsers' testing errors and in most cases 120 cluster's performances are better.
+   3. There are circumstances that testing error is larger than training error (lucky draws).
+   4. Topics from HDBSCAN have a lot of outliers ($\approx$ one half of all) and top 2/3 topics include most of non-outliers.
+   5. Illustration and explanation:
+      1. As from the randomness: PCA is stable because it is linear transformation; UMAP's randomness can't be controlled and anomalies may be produced; KMeans has some randomness from the random state check; GMM also has some randomeness from the results of combination of PCA and GMM ($R^2$ s fluctuate within a range); HDBSCAN is stable from the random state check.
       2. As from the performance: PCA outperforms UMAP from the results of combinations of (UMAP,GMM) and (PCA,GMM); GMM outperforms KMeans from the results of combinations of (UMAP,KMeans) and (UMAP, GMM); GMM and HDBSCAN have similar performances from the results of combinations of (PCA,GMM) and (PCA,HDBSCAN).
       3. As from the representation of topics (60 topics in 2014,2018,2023): (PCA,HDBSCAN) gives many meanless topics including time (week days, months, seasons) and numbers while (PCA,KMeans) and (PCA,GMM) tend to be more reasonable.
-   5. **One problem**: it is found that PCA+GMM's $R^2$s fluctuate in a range, illustring the randomness; However, except for those anomalies, $R^2$s of UMAP+GMM can stay in an exact level. Where do randomnesses of UMAP and GMM go? 
-   6. Best variation advice from Weidong:
+   6. **One problem**: it is found that PCA+GMM's $R^2$ s fluctuate in a range, illustring the randomness; However, except for those anomalies, $R^2$ s of UMAP+GMM can stay in an exact level. Where do randomnesses of UMAP and GMM go? 
+   7. Best variation advice from Weidong:
       1. As for dimension reduction: **PCA should be chosen**; UMAP does perform well in terms of its algorithm, caputuring both local and global features of data and is the recommended way from BERTopic. However, this seems not apply to our research. Some problems may arise from cuML package like having anomalies and uncontrolled randomnesses. Moreover, UMAP randomly throws a computaional error on GRID: `illegal access to memory of cuda` which is found a bug but not fixed yet and this error doesn't happen always.
       2. As for clustering reduction: **GMM should be chosen**; GMM outperforms KMeans and has similar performances to HDBSCAN while it has a better topic representation.
 
+## New comparisons of variations within BERTopic and LDA for contemporaneous returns(reduced dimension before clustering is 10 here; for LDA, prior Dirichlet parameters $\alpha$ and $\eta$ are default 0.1 and 0.01)
+   ### Number of topics is 60:
+   * In-sample $R^2$:
+
+   |Combinatiosn/year|2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|
+   |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
+   |PCA+K-Means|
+   |PCA+GMM|
+   |PCA+HDBSCAN|
+   |LDA|
    
+   * Out-sample $R^2$:
+
+   |Combinatiosn/year|2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|
+   |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
+   |PCA+K-Means|
+   |PCA+GMM|
+   |PCA+HDBSCAN|
+   |LDA|
+   
+   ### Number of topics is 120:
+
+   * In-sample $R^2$:
+   
+   |Combinatiosn/year|2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|
+   |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
+   |PCA+K-Means|
+   |PCA+GMM|
+   |PCA+HDBSCAN|
+   |LDA|
+  
+   * Out-sample $R^2$:
+   
+   |Combinatiosn/year|2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|
+   |:-----------------:|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
+   |PCA+K-Means|
+   |PCA+GMM|
+   |PCA+HDBSCAN|
+   |LDA|
