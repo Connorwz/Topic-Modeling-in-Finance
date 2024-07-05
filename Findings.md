@@ -125,18 +125,16 @@
    1. UMAP is controversial and weird. several runs for one year can raise exactly same $R^2$ while some raise $R^2$ 100x larger or smaller
    2. There is no significant gap betweem 60 and 120 clutsers' testing errors and in most cases 120 cluster's performances are better
    3. There are circumstances that testing error is larger than training error (lucky draws)
-
-
-
-
-   4. Illustration and explanation:
+   4. 4. Illustration and explanation:
 
       1. As from the randomness: PCA is stable because it is linear transformation; UMAP's randomness can't be controlled and anomalies may be produced; KMeans has some randomness from the random state check; GMM also has some randomeness from the results of combination of PCA and GMM ($R^2$s fluctuate within a range); HDBSCAN is stable from the random state check.
-      2. As from the performance: PCA outperforms UMAP from the results of combinations of (UMAP,GMM) and (PCA,GMM); KMeans and GMM have similar performances from the results of combinations of (UMAP,KMeans) and (UMAP, GMM).
+      2. As from the performance: PCA outperforms UMAP from the results of combinations of (UMAP,GMM) and (PCA,GMM); GMM outperforms KMeans from the results of combinations of (UMAP,KMeans) and (UMAP, GMM); GMM and HDBSCAN have similar performances from the results of combinations of (PCA,GMM) and (PCA,HDBSCAN).
+      3. As from the representation of topics (60 topics in 2014,2018,2023): (PCA,HDBSCAN) gives many meanless topics including time (week days, months, seasons) and numbers while (PCA,KMeans) and (PCA,GMM) tend to be more reasonable.
          
    5. **One problem**: it is found that PCA+GMM's $R^2$s fluctuate in a range, illustring the randomness; However, except for those anomalies, $R^2$s of UMAP+GMM can stay in an exact level. Where do randomnesses of UMAP and GMM go? 
    6. Best variation advice from Weidong:
 
       1. As for dimension reduction: **PCA should be chosen**; UMAP does perform well in terms of its algorithm, caputuring both local and global features of data and is the recommended way from BERTopic. However, this seems not apply to our research. Some problems may arise from cuML package like having anomalies and uncontrolled randomnesses. Moreover, UMAP randomly throws a computaional error on GRID: `illegal access to memory of cuda` which is found a bug but not fixed yet and this error doesn't happen always.
+      2. As for clustering reduction: **GMM should be chosen**; GMM outperforms KMeans and has similar performances to HDBSCAN while it has a better topic representation.
 
    
