@@ -185,3 +185,10 @@
    |PCA+GMM|-0.0304%|-0.0327%|-0.0028%|-0.0195%|-0.0136%|-0.0397%|-0.0284%|-0.0136%|-0.0273%
    |PCA+HDBSCAN|
    |LDA|
+
+   ### Findings
+   1. (PCA+GMM) and (PCA+KMeans) have similar performances in terms of $R^2$;
+   2. 120 topics have better performance and generalization than 60 topics;
+
+   ### Problems
+   1. Outliers in 2020 disappear
