@@ -118,12 +118,12 @@
    1. UMAP is controversial and weird. several runs for one year can raise exactly same $R^2$ while some raise $R^2$ 100x larger or smaller.
    2. There is no significant gap betweem 60 and 120 clutsers' testing errors and in most cases 120 cluster's performances are better.
    3. When using UMAP+HDBSCAN, by tunning n_neighbors, n_epochs, and learning_rate in UMAP, and min_cluster_size in HDBSCAN, we can control the number of cluster in a range (The outliery probloem still exists).
-      1. If we want 60 clusters, we can choose
+      1. If we want 60 clusters, we can choose\
          min_cluster_size = 800, n_neighbors = 10;\
          min_cluster_size = 1150, n_neighbors = 30;\
          min_clucster_size = 1450, n_neighbors = 10, n_epochs=1000, learning_rate=0.5;\
          min_clucster_size = 2500, n_neighbors = 30, n_epochs=1000, learning_rate=0.5;
-      2. If we want 120 clusters, we can choose
+      2. If we want 120 clusters, we can choose\
          min_cluster_size = 400, n_neighbors = 10;\
          min_cluster_size = 750, n_neighbors = 30;\
          min_clucster_size = 790, n_neighbors = 10, n_epochs=1000, learning_rate=0.5;\
