@@ -117,14 +117,27 @@
    ### findings within variations
    1. UMAP is controversial and weird. several runs for one year can raise exactly same $R^2$ while some raise $R^2$ 100x larger or smaller.
    2. There is no significant gap betweem 60 and 120 clutsers' testing errors and in most cases 120 cluster's performances are better.
-   3. There are circumstances that testing error is larger than training error (lucky draws).
-   4. Topics from HDBSCAN have a lot of outliers ($\approx$ one half of all) and top 2/3 topics include most of non-outliers.
-   5. Illustration and explanation:
+   3. When using UMAP+HDBSCAN, by tunning n_neighbors, n_epochs, and learning_rate in UMAP, and min_cluster_size in HDBSCAN, we can control the number of cluster in a range (The outliery probloem still exists).
+      1. If we want 60 clusters, we can choose
+         min_cluster_size = 800, n_neighbors = 10;
+         min_cluster_size = 1150, n_neighbors = 30;
+         min_clucster_size = 1450, n_neighbors = 10, n_epochs=1000, learning_rate=0.5;
+         min_clucster_size = 2500, n_neighbors = 30, n_epochs=1000, learning_rate=0.5;
+      2. If we want 120 clusters, we can choose
+         min_cluster_size = 400, n_neighbors = 10;
+         min_cluster_size = 750, n_neighbors = 30;
+         min_clucster_size = 790, n_neighbors = 10, n_epochs=1000, learning_rate=0.5;
+         min_clucster_size = 1300, n_neighbors = 30, n_epochs=1000, learning_rate=0.5;
+      3. However, the $R^2$ for different combination are similar.
+   4. There are circumstances that testing error is larger than training error (lucky draws).
+   5. For combination of PCA+K-means, there is no outlier cluste, while UMAP+HDBSCAN has.
+   6. Topics from HDBSCAN have a lot of outliers ($\approx$ one half of all) and top 2/3 topics include most of non-outliers.
+   7. Illustration and explanation:
       1. As from the randomness: PCA is stable because it is linear transformation; UMAP's randomness can't be controlled and anomalies may be produced; KMeans has some randomness from the random state check; GMM also has some randomeness from the results of combination of PCA and GMM ($R^2$ s fluctuate within a range); HDBSCAN is stable from the random state check.
       2. As from the performance: PCA outperforms UMAP from the results of combinations of (UMAP,GMM) and (PCA,GMM); GMM outperforms KMeans from the results of combinations of (UMAP,KMeans) and (UMAP, GMM); GMM and HDBSCAN have similar performances from the results of combinations of (PCA,GMM) and (PCA,HDBSCAN).
       3. As from the representation of topics (60 topics in 2014,2018,2023): (PCA,HDBSCAN) gives many meanless topics including time (week days, months, seasons) and numbers while (PCA,KMeans) and (PCA,GMM) tend to be more reasonable.
-   6. **One problem**: it is found that PCA+GMM's $R^2$ s fluctuate in a range, illustring the randomness; However, except for those anomalies, $R^2$ s of UMAP+GMM can stay in an exact level. Where do randomnesses of UMAP and GMM go? 
-   7. Best variation advice from Weidong:
+   8. **One problem**: it is found that PCA+GMM's $R^2$ s fluctuate in a range, illustring the randomness; However, except for those anomalies, $R^2$ s of UMAP+GMM can stay in an exact level. Where do randomnesses of UMAP and GMM go? 
+   9. Best variation advice from Weidong:
       1. As for dimension reduction: **PCA should be chosen**; UMAP does perform well in terms of its algorithm, caputuring both local and global features of data and is the recommended way from BERTopic. However, this seems not apply to our research. Some problems may arise from cuML package like having anomalies and uncontrolled randomnesses. Moreover, UMAP randomly throws a computaional error on GRID: `illegal access to memory of cuda` which is found a bug but not fixed yet and this error doesn't happen always.
       2. As for clustering reduction: **GMM should be chosen**; GMM outperforms KMeans and has similar performances to HDBSCAN while it has a better topic representation.
 
