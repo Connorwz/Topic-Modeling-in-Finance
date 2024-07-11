@@ -120,14 +120,14 @@
    3. When using UMAP+HDBSCAN, by tunning n_neighbors, n_epochs, and learning_rate in UMAP, and min_cluster_size in HDBSCAN, we can control the number of cluster in a range (The outliery probloem still exists).
       1. If we want 60 clusters, we can choose
          min_cluster_size = 800, n_neighbors = 10;\
-         min_cluster_size = 1150, n_neighbors = 30;
-         min_clucster_size = 1450, n_neighbors = 10, n_epochs=1000, learning_rate=0.5;
-         min_clucster_size = 2500, n_neighbors = 30, n_epochs=1000, learning_rate=0.5;
+         min_cluster_size = 1150, n_neighbors = 30;\
+         min_clucster_size = 1450, n_neighbors = 10, n_epochs=1000, learning_rate=0.5;\
+         min_clucster_size = 2500, n_neighbors = 30, n_epochs=1000, learning_rate=0.5;\
       2. If we want 120 clusters, we can choose
-         min_cluster_size = 400, n_neighbors = 10;
-         min_cluster_size = 750, n_neighbors = 30;
-         min_clucster_size = 790, n_neighbors = 10, n_epochs=1000, learning_rate=0.5;
-         min_clucster_size = 1300, n_neighbors = 30, n_epochs=1000, learning_rate=0.5;
+         min_cluster_size = 400, n_neighbors = 10;\
+         min_cluster_size = 750, n_neighbors = 30;\
+         min_clucster_size = 790, n_neighbors = 10, n_epochs=1000, learning_rate=0.5;\
+         min_clucster_size = 1300, n_neighbors = 30, n_epochs=1000, learning_rate=0.5;\
       3. However, the $R^2$ for different combination are similar.
    4. There are circumstances that testing error is larger than training error (lucky draws).
    5. For combination of PCA+K-means, there is no outlier cluste, while UMAP+HDBSCAN has.
