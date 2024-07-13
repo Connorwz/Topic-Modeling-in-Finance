@@ -202,6 +202,7 @@
    ### Findings
    1. (PCA+GMM) and (PCA+KMeans) have similar performances in terms of $R^2$;
    2. 120 topics have better performance and generalization than 60 topics;
+   3. When `.score()` in LinearRegression of sklearn is used to calculate the out-smaple $R^2$, testing y's own mean is used to get SST;
 
    ### Problems
    1. Outliers in 2020 disappear
