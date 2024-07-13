@@ -81,3 +81,14 @@
    * The diversity score: the number of unique representation words in a model / the number of all representation wordss in a model.
 5. UMAP is abandonded due to its computational error and unreliability.
 
+# 7/11/2024
+1. Clean the dataset. Drop all 'inst holders' headlines. Some headlines corresponding entities are “source” role we may want to dro these headlines also.
+2. Calculate insample and outsample $R^2$:
+   *In-sample: using training data to fit linear regression. Use the score function to get in-sample $R^2$.
+   *Out-sample: fitting the topic model with new data. Use the in-sample liner regression result and in-sample mean to calculate out-sample $R^2$.
+3. Calculate the coherence/diversity scores for topic representations as a metric to make comparisons in BERTopic.
+   * The cohenrence score (TOPIC BASED)
+   * The diversity score (MODEL BASED)
+   * The similarity score
+   * The significance score
+4. Build the score model for LDA.
