@@ -72,7 +72,7 @@
 # 7/5/2024
 1. Updates the codes to generate new dataframes with sentiment scores related to headlines and data frames and embeddings in the shared folder (only contemperaneous returns, specifying the files' names).
 2. Regression with sentiment score:
-   * First way: Sentiment per company per day. Sum up headlines' sentiment score for each company each day, and times topic weight (per company per day), then do the regression.
+   * First way: Sentiment per return. Sum up headlines' sentiment score for each company each day, and times topic weight (per company per day), then do the regression.
    * Second way: Sentiment per topic. Sum up headlines' sentiment score for each topic after model fitting, standardize the socre, and times topic weight, then do the regression.
 3. Calculate insample and outsample $R^2$ in the way that: fit the topic models in training headlines and freeze them to allocate topics on testing headlines (training:testing = 0.8:0.2), then caluclate insample and outsample $R^2$ s for 60 and 120 clusters respectively.
 4. Calculate the coherence/diversity scores for topic representations as a metric to make comparisons.
@@ -92,3 +92,24 @@
    * The similarity score
    * The significance score
 4. Build the score model for LDA.
+
+# 7/16/2024
+1. As for the dataset:
+   * Remove headlines with a low relevance score. Set the threshold to be 75.
+   * Replace numbers with their magnitudes – i.e., numbers in millions become “mln”. Keep percentage numbers, remove all other numbers.
+  * Remove words that appear too frequently or once. Create a list contain useless frequent words from top 150 words in dataset. Add function that ask user to manualy remove words from 150 top frequent words
+2. focus on per return version of sentiment analysis. Drop per topic version
+
+# 7/18/2024
+1. Remove weekdays, months, years from dataset. ### Final version of data prepossesing.
+2. Train models: PCA-Kmeans, PCA-Gmm, PCA-Hdbscan, PCA-Hdbscan (reduce outliers), LDA.   
+3. Model Parameters include:
+  * sentiment type: no_senti, only_senti, with_senti, per_return.
+  * cluster number: 60, 120.
+
+# 7/23/2024
+1. Build three-model version of topic model. Seperate the dataset into news with positive, negative, neutral sentiment score. Train three models seperately.
+2. Do linear-regression on seperate, combine basis.
+    * Seperate: regress three times, calculate R^2, model score.
+    * Combine: concat three dataframe from three models together, regress one time, calculate R^2, model score.
+3. Compare the topic data of LDA with Bertopic.
