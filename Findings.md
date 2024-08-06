@@ -197,7 +197,7 @@
    1. As for the new model with updated dataset, sentiment score, and relevent score threshold, the performce of 120 clusters is better than 60's.
    2. Using Per Topic sentiment version does not have improvement in in-sample R^2. Moreover, the aggregate sentiment score based on topic may bring too much future information. More importance will be put on per return version and with sentiment version in the future.
    3. For different sentiment version, per return and with return outperforms no sentiment and only sentiment. The best score shows up in per return.
-   4. For in-sample R^2, adding sentiment do explain return better than only sentiment and only topic weight. But the out-sample R^2 is not satisfactory, negative values ofthen appears. Need to improve the model.
+   4. For in-sample R^2, adding sentiment do explain return better than only sentiment and only topic weight. But the out-sample R^2 is not satisfactory, negative values often appears. Need to improve the model.
    5.  Regression with only sentiment score show jumps in year 2017, 2019, 2023. This jump is more significant in per return version. (?)
    6. Regarding the in-sample R^2, PCA-KMeans, PCA-Gmm out performs PCA-HDBScan, and LDA. For all bertopic model, the biggest gap is around 2 percent. All bertopic model outperforms LDA at an average level around 4%. 120 outperforms 60, with 1% improvement.
    7. R^2 in 2023 is much larger than other years. (?)
