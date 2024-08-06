@@ -190,8 +190,10 @@
    1. Outliers in 2020 disappear
 
    ### New Findings from second cleaned version data and model
-   IMPORTANT: Detailed data will be uploaded as an excel file.
-   IMPORTANT: the split of dataset is locked eachtime. Further experiement will be done later.
+   **IMPORTANT: Detailed data will be uploaded as an excel file.**
+   
+   **IMPORTANT: the split of dataset is locked eachtime. Further experiement will be done later.**
+   
    1. As for the new model with updated dataset, sentiment score, and relevent score threshold, the performce of 120 clusters is better than 60's.
    2. Using Per Topic sentiment version does not have improvement in in-sample R^2. Moreover, the aggregate sentiment score based on topic may bring too much future information. More importance will be put on per return version and with sentiment version in the future.
    3. For different sentiment version, per return and with return outperforms no sentiment and only sentiment. The best score shows up in per return.
