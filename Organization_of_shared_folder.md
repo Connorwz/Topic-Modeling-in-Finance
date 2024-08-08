@@ -12,6 +12,20 @@
 ## Embeddings: embeddings of heandlines in prepocessed data with sentiment scores and vocab control. (embedding model is the default in BERTopic if not documented)
 1. One_year_window: embeddings of related data frames for each year spanning from 2014 to 2023
 
+## Stored_model: all Bert and LDA's training model:
+1. new_data: contains the orginal one model version using latest cleaned data. 
+2. three_models: contain the sentiment seperate model (positive, negative, neutral)
+   * pos_topic
+       * no_senti
+           * pcakmeans
+           * pcagmm
+           * pcahdbscan
+           * lda
+       * with_senti
+       * per_ret
+
+   * neg_topic
+   * neu_topic
 ## Weidong
 ### Bert_var: models saved when computing variations within BERTopic
 1. Old_one_year_window_contem: models saved when computing $R^2$ s in old ways
