@@ -1,7 +1,9 @@
 # 7/30/2024
-1. Choose seperate model (positive, negative, neutral) without adding sentiment score to the data set as our training model.
-2. Find out why LDA doesnot perform well in terms of words in topics and R square.
-3. Make comparison of topic representation words in BERT and LDA. Give examples of the topics generate.
+1. No we choose the three-in-one sentiment model (building model based on dataset with positive, negative, neutral sentiment score seperately). When calculate R squre, we do not add sentiment score into the dataframe that contains topic exposure (no_senti version).
+2. Calculate R square of seperate version based on three model emmbeddings' weight. Calculate R square of combined version based on concatinate data frame.
+3. seperate version and combined version using the same stored model.
+4. Find out why LDA doesnot perform well in terms of words in topics and R square.
+5. Make comparison of topic representation words in BERT and LDA. Give examples of the topics generate.
 
 # 7/23/2024
 1. Build three-model version of topic model. Seperate the dataset into news with positive, negative, neutral sentiment score. Train three models seperately.
