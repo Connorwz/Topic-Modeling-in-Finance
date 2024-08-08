@@ -1,3 +1,8 @@
+# 7/30/2024
+1. Choose seperate model (positive, negative, neutral) without adding sentiment score to the data set as our training model.
+2. Find out why LDA doesnot perform well in terms of words in topics and R square.
+3. Make comparison of topic representation words in BERT and LDA. Give examples of the topics generate.
+
 # 7/23/2024
 1. Build three-model version of topic model. Seperate the dataset into news with positive, negative, neutral sentiment score. Train three models seperately.
 2. Do linear-regression on seperate, combine basis.
