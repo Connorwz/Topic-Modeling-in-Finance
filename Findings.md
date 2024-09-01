@@ -207,3 +207,5 @@
    11. Reduce outliers for PCA-HDBScan can increaase the perfromance of in-sample R^2, but the cos similarity between topics increases a lot.
    12. LDA achieves better result in cos similarity with topics, while the score for cos similarity within topics and between topics are similar, indicating LDA's topics donot       have significant difference. (?)
    13. Overall, PCA-Kmeans has the best performance in R^2, cos similarities and model diversity.
+
+   14. Combined version is better than separate version in terms of in-sample and out-sample performances.
