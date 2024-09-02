@@ -1,3 +1,9 @@
+# 2/9/2024
+1. Check the original codes for python package lda and see whether `.transform()` uses the trained model's parameters.
+2. Check why HDBSCAN keeps throwing out segfault by looking at duplicated rows and possible identical reduced embeddings.
+3. Look into why there are zero topic exposures when generating then with `.approximate_distribution()` and see whether this happens less if headlines considered as outliers in HDBSCAN are removed before applying `.approximate_distribution()`
+4. In the future studies, CountVectorizer() are set without parameters but look into why better $R^2$s are thrown out when CountVectorizer() has no parameters. 
+
 # 7/30/2024
 1. No we choose the three-in-one sentiment model (building model based on dataset with positive, negative, neutral sentiment score seperately). When calculate R squre, we do not add sentiment score into the dataframe that contains topic exposure (no_senti version).
 2. Calculate R square of seperate version based on three model emmbeddings' weight. Calculate R square of combined version based on concatinate data frame.
