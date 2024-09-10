@@ -1,3 +1,8 @@
+# 10/9/2024
+1. Keep duplicated headlines and stop fitting model with hdbscan.
+2. Try fitting BERTopic with sci-kit learn package and see whether there are zero topic exposure headlines.
+3. Assign those headlines having zero topic exposure probability of 1 to the cluster/topic where it's fitted in during model fitting and calculate the $R^2$
+
 # 2/9/2024
 1. Check the original codes for python package lda and see whether `.transform()` uses the trained model's parameters.
 2. Check why HDBSCAN keeps throwing out segfault by looking at duplicated rows and possible identical reduced embeddings.
