@@ -1,3 +1,6 @@
+# 13/9/2024
+1. Find the exact reason why there are headlines having zero topic exposure.
+
 # 10/9/2024
 1. Keep duplicated headlines and stop fitting model with hdbscan.
 2. Try fitting BERTopic with sci-kit learn package and see whether there are zero topic exposure headlines.
