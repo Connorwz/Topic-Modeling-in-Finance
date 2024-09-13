@@ -214,3 +214,5 @@
    17. For LDA, the topic exposures of training dataset are highly concentrated in some numbers which is because the training data is short headlines and they aren't updated far away from the prior distribution but are versatile for testing data, causing bad generalization of LDA model. From this result, it is recommended to use BERTopic other than LDA over short documents.
    18. For segfault thrown out by HDBSCAN, it can be fixed with removing duplicated headlines. However, removing duplicates has a big impact on number of clusters produced. For example, training headlines in 2022 have a length of 315,320 and duplicates-removed headlines are 202,146 but number of clusters produced are 478 and 35 respectively with `min_cluster_size` set as 10.
    19. When training data set is smaller, the outliers produced by HDBSCAN are more.
+   20. After python package is changed from cuML to sclearn, there are still headlines of zero topic exposure.
+   21. After assigning indicator probability of one to zero topic exposure headlines, there is a slight drop on the $R^2$
