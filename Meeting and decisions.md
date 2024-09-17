@@ -1,3 +1,11 @@
+# 17/9/2024
+1. In the constrcution of paper:
+   * Do a complete introduction and procedures done to extract data for each data base first.
+   * Provide drops on number of headlines along steps of vocabulary control.
+   * There is no need to do comparisons between pre- and post- vocabulary control headlines.
+   * Delete the part of wt calculations because there isn't a bug.
+   * Just present the results of best way to include sentiment but make some notations of others.
+
 # 13/9/2024
 1. Find the exact reason why there are headlines having zero topic exposure.
 
