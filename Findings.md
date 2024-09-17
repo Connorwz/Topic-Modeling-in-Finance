@@ -215,4 +215,5 @@
    18. For segfault thrown out by HDBSCAN, it can be fixed with removing duplicated headlines. However, removing duplicates has a big impact on number of clusters produced. For example, training headlines in 2022 have a length of 315,320 and duplicates-removed headlines are 202,146 but number of clusters produced are 478 and 35 respectively with `min_cluster_size` set as 10.
    19. When training data set is smaller, the outliers produced by HDBSCAN are more.
    20. After python package is changed from cuML to sclearn, there are still headlines of zero topic exposure.
-   21. After assigning indicator probability of one to zero topic exposure headlines, there is a slight drop on the $R^2$
+   21. After assigning indicator probability of one to zero topic exposure headlines, there is a slight drop on the $R^2$.
+   22. The reason we have zero topic exposures is because there is a [minimum_similarity](https://github.com/MaartenGr/BERTopic/blob/master/bertopic/_bertopic.py#L1223) and those similarities below this minimum is set as zero.
