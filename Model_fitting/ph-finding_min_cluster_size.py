@@ -2,6 +2,7 @@ import os
 import pandas as pd 
 from sentence_transformers import SentenceTransformer
 from cuml.decomposition import PCA
+from cuml.manifold import UMAP
 from cuml.cluster import HDBSCAN
 from sklearn.feature_extraction.text import CountVectorizer
 from bertopic import BERTopic
@@ -23,8 +24,18 @@ def ph(min_cluster_size):
                         calculate_probabilities = False,verbose = True)
     return Topic_model
 
+def uh(min_cluster_size):
+    embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+    umap_model = UMAP(n_components = 10, random_state = 42)
+    hdbscan_model = HDBSCAN(min_cluster_size=min_cluster_size,metric = "euclidean", cluster_selection_method="eom",
+                            gen_min_span_tree = True, prediction_data = False, min_samples = 40)
+    vectorizer_model = CountVectorizer()
+    Topic_model = BERTopic(embedding_model=embedding_model, umap_model=umap_model, hdbscan_model=hdbscan_model, vectorizer_model=vectorizer_model,
+                        calculate_probabilities = False,verbose = True)
+    return Topic_model
+
 def find_min_cluster_size(min_cluster_size,min_cluster_size_list,headlines,embeddings,target_num_cluster):
-    Topic_model = ph(min_cluster_size)
+    Topic_model = uh(min_cluster_size)
     Topic_model.fit(headlines,embeddings)
     num_cluster = Topic_model.get_topic_info().shape[0]-1
     if num_cluster > (target_num_cluster + round(5*target_num_cluster/120)) or num_cluster < (target_num_cluster - round(5*target_num_cluster/120)):
@@ -36,7 +47,7 @@ def find_min_cluster_size(min_cluster_size,min_cluster_size_list,headlines,embed
         if num_cluster > (target_num_cluster + round(5*target_num_cluster/120)):
             if np.array(min_cluster_size_list)[np.array(min_cluster_size_list) > min_cluster_size].size >0:
                 min_cluster_size = np.array(min_cluster_size_list)[np.array(min_cluster_size_list) > min_cluster_size][0]
-                Topic_model = ph(min_cluster_size)
+                Topic_model = uh(min_cluster_size)
                 Topic_model.fit(headlines,embeddings)
                 num_cluster = Topic_model.get_topic_info().shape[0]-1
             else:
@@ -45,7 +56,7 @@ def find_min_cluster_size(min_cluster_size,min_cluster_size_list,headlines,embed
         else:
             if np.array(min_cluster_size_list)[np.array(min_cluster_size_list) < min_cluster_size].size > 0:
                 min_cluster_size = np.array(min_cluster_size_list)[np.array(min_cluster_size_list) < min_cluster_size][-1]
-                Topic_model = ph(min_cluster_size)
+                Topic_model = uh(min_cluster_size)
                 Topic_model.fit(headlines,embeddings)
                 num_cluster = Topic_model.get_topic_info().shape[0]-1
             else:
@@ -54,7 +65,7 @@ def find_min_cluster_size(min_cluster_size,min_cluster_size_list,headlines,embed
         print(f"after {no_tuning}th tuning, the min_cluster_size is {min_cluster_size}")
     return min_cluster_size
 
-min_cluster_size_list = range(20,200,5)
+min_cluster_size_list = range(100,300,5)
 
 def tr_te_split(headlines,df,embeddings,i=1):
     indices = np.arange(len(headlines))
@@ -68,10 +79,11 @@ def tr_te_split(headlines,df,embeddings,i=1):
 
 print("set up finished")
 
-df_folder = "/shared/share_tm-finance/Processed_df_Sentiment/One_year_window"
-embeddings_folder = "/shared/share_tm-finance/Embeddings_with_Sentiment/One_year_window"
+df_folder = "/shared/share_tm-finance/Final/Processed_df/One_year_window"
+embeddings_folder = "/shared/share_tm-finance/Final/Embeddings/One_year_window"
 # saved_model_folder = "/shared/share_tm-finance/Stored_model/pcakmeans"
-year_list = range(2021,2022)
+year_list = range(2014,2024)
+min_cluster_size_tune = 200
 num_clusters = 120
 pos_min_cluster_size_list = []
 neg_min_cluster_size_list = []
@@ -86,9 +98,9 @@ for year in year_list:
     print(f"computation for {year} starts")
     torch.cuda.empty_cache()
     gc.collect()
-    df = pd.read_csv(df_folder+f"/contem_{year}_senti.csv")
+    df = pd.read_csv(df_folder+f"/contem_{year}.csv")
     headlines = df.vocab_con_headline.tolist()
-    embeddings = np.load(embeddings_folder+f"/contem_{year}_senti_embeddings.npy")
+    embeddings = np.load(embeddings_folder+f"/contem_{year}_embeddings.npy")
 
     print(f"The df and embeddings in {year} finished")
 
@@ -125,7 +137,6 @@ for year in year_list:
     neg_tr_df_tune, neg_te_df_tune, neg_tr_headlines_tune,neg_te_headlines_tune,neg_tr_embeddings_tune = tr_te_split(neg_headlines,neg_df,neg_embeddings)
     neu_tr_df_tune, neu_te_df_tune, neu_tr_headlines_tune,neu_te_headlines_tune,neu_tr_embeddings_tune = tr_te_split(neu_headlines,neu_df,neu_embeddings)
     
-    min_cluster_size_tune = 100
     pos_min_cluster_size = find_min_cluster_size(min_cluster_size_tune,min_cluster_size_list,pos_tr_headlines_tune,pos_tr_embeddings_tune,pos_cluster_num)
     neg_min_cluster_size = find_min_cluster_size(min_cluster_size_tune,min_cluster_size_list,neg_tr_headlines_tune,neg_tr_embeddings_tune,neg_cluster_num)
     neu_min_cluster_size = find_min_cluster_size(min_cluster_size_tune,min_cluster_size_list,neu_tr_headlines_tune,neu_tr_embeddings_tune,neu_cluster_num)
